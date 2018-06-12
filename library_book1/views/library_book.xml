@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    
+    <record id="menu_library" model="ir.ui.menu" >
+        <field name="name">Library</field>
+    </record>
+
+    <record id="menu_library_book_top" model="ir.ui.menu" >
+        <field name="name">图书馆</field>
+        <field name="sequence" eval="10" />
+        <field name="parent_id" ref="menu_library" />
+    </record>
+    
+    <record id="menu_wizard" model="ir.ui.menu" >
+        <field name="name">借还向导</field>
+        <field name="sequence" eval="20" />
+        <field name="parent_id" ref="menu_library" />
+    </record>
+    
+
+    
+    <record id="action_library_book_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">图书</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    
+    <record id="action_library_member_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">会员</field>
+        <field name="res_model">library.member</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    
+    <record id="action_library_book_loan_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">借还记录</field>
+        <field name="res_model">library.book.loan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    
+    <record id="menu_library_book" model="ir.ui.menu" >
+        <field name="name">书籍</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_library_book_act_window" />
+        <field name="parent_id" ref="menu_library_book_top" />
+    </record>
+    
+    <record id="menu_library_member" model="ir.ui.menu" >
+        <field name="name">会员列表</field>
+        <field name="sequence" eval="20" />
+        <field name="action" ref="action_library_member_act_window" />
+        <field name="parent_id" ref="menu_library_book_top" />
+    </record>
+
+    <record id="menu_library_book_loan" model="ir.ui.menu" >
+        <field name="name">借还记录列表</field>
+        <field name="sequence" eval="30" />
+        <field name="action" ref="action_library_book_loan_act_window" />
+        <field name="parent_id" ref="menu_library_book_top" />
+    </record>
+    
+    
+    <record id="action_library_loan_wizard_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">借书</field>
+        <field name="res_model">library.loan.wizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    
+    <record id="menu_library_loan_wizard" model="ir.ui.menu" >
+        <field name="name">借书向导</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_library_loan_wizard_act_window" />
+        <field name="parent_id" ref="menu_wizard" />
+    </record>
+    
+    
+    
+
+</odoo>
