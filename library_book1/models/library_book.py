@@ -76,7 +76,7 @@ class LibraryBookLoan(models.Model):
     state = fields.Selection(string=u'状态',selection=[('ongoing', u'借出'), ('done', u'归还')])
 
 
-class LibraryLoanWizard(models.Model):
+class LibraryLoanWizard(models.TransientModel):
     """ 
 
    The summary line for a class docstring should fit on one line.
