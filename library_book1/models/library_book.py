@@ -47,7 +47,7 @@ class LibraryMember(models.Model):
     def borrow_books(self,books):
         loan=self.env['library.book.loan']
         for book in books:
-            vals=_prepare_loan(book)
+            vals=self._prepare_loan(book)
             loan.create(vals)
             book.change_state('borrowed')
 
