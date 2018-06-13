@@ -104,7 +104,6 @@ class LibraryReturnWizard(models.TransientModel):
     _name = 'library.return.wizard'
     _description = u'还书向导'
     
-    
     member_id = fields.Many2one(string=u'会员',comodel_name='library.member',ondelete='set null',)
     
     book_ids = fields.Many2many(string=u'图书',comodel_name='library.book',)
@@ -112,7 +111,7 @@ class LibraryReturnWizard(models.TransientModel):
     @api.multi
     def record_returns(self):
         loan=self.env['library.book.loan']
-        loans=loan.browse([('book_id','in',self.book_ids.ids)])
+        loans=loan.search([('book_id','in',self.book_ids.ids)])
         for loan_rec in loans:
             loan_rec.write({'state':'done'})
     
