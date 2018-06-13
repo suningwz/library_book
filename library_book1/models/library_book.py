@@ -35,7 +35,8 @@ class LibraryBook(models.Model):
 
 class LibraryMember(models.Model):
     """ 
-    只有一个基本字段member_number,表示会员卡
+    只有一个基本字段member_number,表示会员卡，borrow_books()方法创建loan实例，它的books参数是借书向导的record_borrows()方法调用它时传入的；
+    borrow_books()又调用member.book的change_state()方法来改变图书的状态为"borrowed"。
     """
     
     _inherits = {'res.partner': 'partner_id'} 
@@ -62,9 +63,7 @@ class LibraryMember(models.Model):
 
 class LibraryBookLoan(models.Model):
     """ 
-
-   The summary line for a class docstring should fit on one line.
-
+    library.book.loan的state字段的默认值为ongoing，所以通过library.loan.wizard新创建的loan实例都是“借出”状态
     """
 
     _name = 'library.book.loan'
@@ -79,9 +78,7 @@ class LibraryBookLoan(models.Model):
 
 class LibraryLoanWizard(models.TransientModel):
     """ 
-
-   The summary line for a class docstring should fit on one line.
-
+    通过library.loan.wizard的record_borrows()方法调用library.member的borrow_books(),并传入参数books（library.book的record）
     """
 
     _name = 'library.loan.wizard'
@@ -96,6 +93,10 @@ class LibraryLoanWizard(models.TransientModel):
         books=self.book_ids
         member=self.member_id
         member.borrow_books(books)
+
+
+    
+
     
 
     
