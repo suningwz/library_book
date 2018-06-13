@@ -9,8 +9,9 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
 '''
-创建图书、会员、借还记录、借书向导等4个实体的model，实现功能：从借书向导的表单获取会员和图书信息(使用self.member_id和self.book_ids)创建
-借书记录（library.book.loan的record）
+创建图书、会员、借还记录、借书向导等4个实体的model，实现功能：从借书向导的表单获取会员和图书信息(使用self.member_id和self.book_ids),
+执行record_borrows(books)方法，该方法调用会员对象的borrow_books(),创建借书记录（library.book.loan的record），loan的record的state默认为'ongoing',
+borrow_books()方法又调用图书对象的change_state('borrowed')方法改变图书record对象的state字段为'外借'(borrowd)。
 '''
 
 
@@ -71,9 +72,9 @@ class LibraryBookLoan(models.Model):
     _order = 'name ASC'
 
     name = fields.Char(string=u'Loan Reference',required=True,default=lambda self: _('New'))
-    member_id = fields.Many2one(string=u'会员号',comodel_name='library.member',      required=True,) 
+    member_id = fields.Many2one(string=u'会员号',comodel_name='library.member',required=True,) 
     book_id = fields.Many2one(string=u'图书',comodel_name='library.book',required=True,)  
-    state = fields.Selection(string=u'状态',selection=[('ongoing', u'借出'), ('done', u'归还')])
+    state = fields.Selection(string=u'状态',selection=[('ongoing', u'借出'), ('done', u'归还')],default='ongoing',)
 
 
 class LibraryLoanWizard(models.TransientModel):
@@ -96,6 +97,7 @@ class LibraryLoanWizard(models.TransientModel):
         member=self.member_id
         member.borrow_books(books)
     
+
     
 
 
