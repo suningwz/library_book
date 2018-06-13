@@ -33,7 +33,7 @@ Library Book Main Module Project.
         'python': [
         ],
     },
-    'data': ['views/library_book.xml'
+    'data': ['views/library_book.xml','views/library_book_view.xml'
     ],
     'application':True,
     'demo': [
