@@ -114,8 +114,8 @@ class LibraryReturnWizard(models.TransientModel):
         loans=loan.search([('book_id','in',self.book_ids.ids)]) #search()方法的参数是domain表达式，browse()的参数是id列表，它们都返回recordset
         for loan_rec in loans:
             loan_rec.write({'state':'done'})
-        book=loan_rec.mapped('book_id')
-        book.change_state('available')
+            book=loan_rec.mapped('book_id')
+            book.change_state('available')
 
 
     
