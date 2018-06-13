@@ -92,6 +92,26 @@
         <field name="action" ref="action_library_loan_wizard_act_window" />
         <field name="parent_id" ref="menu_wizard" />
     </record>
+
+    
+    <record id="action_library_return_wizard_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">还书</field>
+        <field name="res_model">library.return.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_type">form</field>
+        <field name="target">new</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    <record id="menu_library_return_wizard" model="ir.ui.menu" >
+        <field name="name">还书向导</field>
+        <field name="sequence" eval="20" />
+        <field name="action" ref="action_library_return_wizard_act_window" />
+        <field name="parent_id" ref="menu_wizard" />
+    </record>
+    
+    
     
     
     

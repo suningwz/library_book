@@ -8,17 +8,34 @@
         <field name="arch" type="xml">
             
             <form>
-                <sheet>
-                    
+                <sheet>                   
                     <field name="member_id">会员</field>
-                    <field name="book_ids">图书</field>
-                    
-                    
+                    <field name="book_ids">图书</field>                    
                 </sheet>
-                <footer>
-                    
-                    <button name="record_borrows" string="Borrow" type="object" />
-                    
+
+                <footer>                   
+                    <button name="record_borrows" string="Borrow" type="object" />                   
+                </footer>
+            </form>
+            
+        </field>
+    </record>
+    
+    
+    <!-- Form view for "Library Loan Wizard" -->
+    <record id="view_library_loan_wizard_form" model="ir.ui.view">
+        <field name="name">view.library.loan.wizard.form</field>
+        <field name="model">library.return.wizard</field>
+        <field name="arch" type="xml">
+            
+            <form>
+                <sheet>                    
+                    <field name="member_id" />
+                    <field name="book_ids" />               
+                </sheet>
+
+                <footer>                    
+                    <button name="record_returns" string="Return" type="object" />                    
                 </footer>
             </form>
             
