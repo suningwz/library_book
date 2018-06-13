@@ -30,7 +30,7 @@ class LibraryBook(models.Model):
 
     @api.multi
     def change_state(self,new_state):
-        self.state=new_state
+        self.state=new_state  #self必须是singleton，不能是包含多个record的recordset
     
 
 class LibraryMember(models.Model):
