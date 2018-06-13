@@ -23,8 +23,8 @@
     
     
     <!-- Form view for "Library Loan Wizard" -->
-    <record id="view_library_loan_wizard_form" model="ir.ui.view">
-        <field name="name">view.library.loan.wizard.form</field>
+    <record id="view_library_return_wizard_form" model="ir.ui.view">
+        <field name="name">view.library.return.wizard.form</field>
         <field name="model">library.return.wizard</field>
         <field name="arch" type="xml">
             
