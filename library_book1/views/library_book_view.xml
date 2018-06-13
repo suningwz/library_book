@@ -15,7 +15,11 @@
                     
                     
                 </sheet>
-                
+                <footer>
+                    
+                    <button name="record_borrows" string="Borrow" type="object" />
+                    
+                </footer>
             </form>
             
         </field>
